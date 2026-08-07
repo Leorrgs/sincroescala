@@ -1,3 +1,5 @@
+funcionarios = []
+sair_do_sistema = False
 
 def apresenta_menu():
     print("======================================")
@@ -11,26 +13,37 @@ def apresenta_menu():
     opcao_menu = input("Escolha uma opção: ")
     return opcao_menu
 
-def cadastrar_funcionarios():
-    funcionarios = input("digite o nome do funcionario: ")
-    print("O nome cadastrado foi: {funcionários}")
-    
+def cadastrar_funcionário():
+    funcionário = input("digite o nome do funcionario: ")
+    funcionarios.append(funcionário)
+    print(f"O nome cadastrado foi: {funcionário}")
+    print("======================================")
+    print("você gostaria de adicionar um novo funcionário?")
+    print("1. Sim ✅")
+    print("2. Não ❌")
+    seguir_cadastro = input("Escolha uma opção: ")
+    print("======================================")
+    if seguir_cadastro  == "1":    
+        cadastrar_funcionário()
+    if seguir_cadastro == "2":
+        print("cadastro concluido ✅")
+     
 def listar_funcionarios():
     print("listando funcionarios")
 
 def sair():
     print("saindo do sistema de gestão de escala⏏️")
 #=======================================================================
+while not sair_do_sistema: 
+    opcao_menu = apresenta_menu()
 
-opcao_menu = apresenta_menu()
-
-match opcao_menu:
-    case "1":
-        cadastrar_funcionarios()
-    case "2":
-        listar_funcionarios()
-    case "0":
-        print("Quase final de semana!")
-    case _:
-        print("Opção Inválida.")
+    match opcao_menu:
+        case "1":
+            cadastrar_funcionário()
+        case "2":
+            listar_funcionarios()
+        case "0":
+            sair()
+        case _:
+            print("Opção Inválida.")
         

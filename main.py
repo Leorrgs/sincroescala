@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 funcionarios = []
 sair_do_sistema = False
 
@@ -15,6 +18,8 @@ def apresenta_menu():
 
 def cadastrar_funcionário():
     funcionário = input("digite o nome do funcionario: ")
+    with open(Path("sincroescala/BD") / "funcionario_bd.txt","w", encoding="utf-8") as arquivo:
+            arquivo.write(funcionário)
     funcionarios.append(funcionário)
     print(f"O nome cadastrado foi: {funcionário}")
     print("======================================")
@@ -30,6 +35,8 @@ def cadastrar_funcionário():
      
 def listar_funcionarios():
     print("listando funcionarios")
+    for idx, funcionário in enumerate (funcionarios, start=1):
+        print(f"{idx} - {funcionário}")
 
 def sair():
     print("saindo do sistema de gestão de escala⏏️")
@@ -44,6 +51,7 @@ while not sair_do_sistema:
             listar_funcionarios()
         case "0":
             sair()
+            break
         case _:
             print("Opção Inválida.")
         

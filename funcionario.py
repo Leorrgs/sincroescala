@@ -41,4 +41,4 @@ def excluir_funcionários():
         for linha in nomes :
             if linha.strip() == funcionário:
                 linha = ""
-            arquivo.write(linha)              
+            arquivo.write(linha)                  

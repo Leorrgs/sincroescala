@@ -19,4 +19,21 @@ def cadastrar_escala():
         cadastrar_escala()
     if seguir_escala== "2":
         print("escala concluida ✅")
+        
+def listar_escalas():
+     with open(path_bd,"r", encoding="utf-8") as arquivo:
+        for linha in arquivo:
+            nome_limpo = linha.strip()
+            print(nome_limpo)
             
+def excluir_escala():
+    listar_escalas()
+    escala = input("qual escala você deseja deletar: ")
+    with open(path_bd,"r", encoding="utf-8") as arquivo:
+        nomes = arquivo.readlines()
+    with open(path_bd,"w", encoding="utf-8") as arquivo:
+        for linha in nomes :
+            if linha.strip() == escala:
+                linha = ""
+            arquivo.write(linha)              
+                

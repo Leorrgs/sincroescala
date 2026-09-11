@@ -4,6 +4,12 @@ path_bd = Path("sincroescala/BD") / "funcionario_bd.txt"
 funcionarios = []
 
 def cadastrar_funcionários():
+    print("======================================")
+    print("     CADASTRO DE FUNCIONÁRIO          ")
+    print("======================================")
+    print("")
+    listar_funcionários()
+    print("")
     funcionário = input("digite o nome do funcionario: ")
     with open(path_bd,"a", encoding="utf-8") as arquivo:
             arquivo.write(f"{funcionário}\n")

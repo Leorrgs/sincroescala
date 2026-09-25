@@ -1,4 +1,4 @@
-from funcionario import cadastrar_funcionários, listar_funcionários, excluir_funcionários
+from funcionario import cadastrar_funcionarios, excluir_funcionarios, listar_funcionarios
 from escala import cadastrar_escala, listar_escala, excluir_escala
 
 sair_do_sistema = False
@@ -28,11 +28,11 @@ while not sair_do_sistema:
 
     match opcao_menu:
         case "1":
-            cadastrar_funcionários()
+            cadastrar_funcionarios()
         case "2":
-            listar_funcionários()
+            listar_funcionarios()
         case "3":
-            excluir_funcionários()  
+            excluir_funcionarios()  
         case "4":
             cadastrar_escala()  
         case "5":

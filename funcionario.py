@@ -39,7 +39,7 @@ def cadastrar_funcionarios():
 def listar_funcionarios():
     funcionarios = _carregar_funcionario()
     for f in funcionarios :
-        print(f"id: {f['id']}")
+        print(f"id: {f['id']} - nome: {f['nome']}")
         
     
             

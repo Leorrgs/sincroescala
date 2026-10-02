@@ -10,6 +10,10 @@ def _carregar_funcionario():
     
     with open(path_bd,"r", encoding="utf-8") as arquivo:
        return json.load(arquivo)
+   
+def _pedir_id():
+    return int(input("digite o id do funcionário que deseja excluir: "))
+   
 
 def cadastrar_funcionarios():
     funcionarios = _carregar_funcionario()
@@ -40,16 +44,15 @@ def listar_funcionarios():
     funcionarios = _carregar_funcionario()
     for f in funcionarios :
         print(f"id: {f['id']} - nome: {f['nome']}")
-        
-    
             
 def excluir_funcionarios():
-    listar_funcionarios()
-    funcionário = input("qual funcionário você deseja deletar: ")
-    with open(path_bd,"r", encoding="utf-8") as arquivo:
-        nomes = arquivo.readlines()
+    funcionarios = _carregar_funcionario()
+    id_excluir = _pedir_id()
+    
+    funcionario = next((f for f in funcionarios if f["id"] == id_excluir),None)
+    funcionarios.remove(funcionario)
+    
     with open(path_bd,"w", encoding="utf-8") as arquivo:
-        for linha in nomes :
-            if linha.strip() == funcionário:
-                linha = ""
-            arquivo.write(linha)              
+        json.dump(funcionarios, arquivo, ensure_ascii=False, indent=4)
+    
+            
